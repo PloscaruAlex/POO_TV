@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="91c57316-e90f-4986-a914-7049bce4f509" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/checker/resources/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/in/basic_9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checker/resources/ref/basic_9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jackson-annotations-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jackson-core-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jackson-databind-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proiect1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checker/CheckStyleConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checker/Checkstyle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checker/checkstyle-8.36.2-all.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checker/checkstyle.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checker/poo_checks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proiect1.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2IlXD1OxIhYzmdTRIp3FI6iVPtO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/FACULTATE/A2S1/POO/TEMA2/oop-asignments/proiect1/Tema2"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="proiect1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="proiect1" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91c57316-e90f-4986-a914-7049bce4f509" name="Changes" comment="" />
+      <created>1670757020598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670757020598</updated>
+      <workItem from="1670757022036" duration="1803000" />
+      <workItem from="1670775222100" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
