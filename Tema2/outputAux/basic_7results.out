@@ -333,6 +333,10 @@
   "rating" : 0.0,
   "numRatings" : 0
 }, {
+  "error" : "Error",
+  "currentMoviesList" : [ ],
+  "currentUser" : null
+}, {
   "error" : null,
   "currentMoviesList" : [ ],
   "currentUser" : {
@@ -539,6 +543,10 @@
   "rating" : 0.0,
   "numRatings" : 0
 }, {
+  "error" : "Error",
+  "currentMoviesList" : [ ],
+  "currentUser" : null
+}, {
   "error" : null,
   "currentMoviesList" : [ {
     "name" : "Lord, Save Us from Your Followers",
@@ -716,6 +724,10 @@
     "likedMovies" : [ ],
     "ratedMovies" : [ ]
   }
+}, {
+  "error" : "Error",
+  "currentMoviesList" : [ ],
+  "currentUser" : null
 }, {
   "error" : "Error",
   "currentMoviesList" : [ ],
