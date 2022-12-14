@@ -83,6 +83,7 @@ public class Purchase extends Action {
             }
 
             user.getPurchasedMovies().add(movie);
+            this.getSession().getOutput().add(OutputHelper.details(movie, user));
         }
     }
 }

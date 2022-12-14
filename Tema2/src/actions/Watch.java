@@ -43,5 +43,6 @@ public class Watch extends Action {
         }
 
         user.getWatchedMovies().add(movie);
+        this.getSession().getOutput().add(OutputHelper.details(movie, user));
     }
 }

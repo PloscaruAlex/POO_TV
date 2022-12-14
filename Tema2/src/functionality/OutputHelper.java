@@ -147,4 +147,16 @@ public class OutputHelper {
 
         return node;
     }
+
+    public static ObjectNode details(Movie movie, User u) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode node = objectMapper.createObjectNode();
+        node.set("error", null);
+        ArrayNode arr = objectMapper.createArrayNode();
+        arr.add(movieOutputHelper(movie));
+        node.set("currentMoviesList", arr);
+        node.set("currentUser", userOutputHelper(u));
+
+        return node;
+    }
 }

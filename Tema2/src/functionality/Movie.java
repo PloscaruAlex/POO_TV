@@ -14,6 +14,7 @@ public class Movie {
     private int numLikes;
     private double rating;
     private int numRatings;
+    private ArrayList<Double> ratingsList = new ArrayList<Double>();
 
     public void setMovieFromInput(MoviesInput movie) {
         this.name = movie.getName();
@@ -94,5 +95,16 @@ public class Movie {
 
     public void setNumRatings(int numRatings) {
         this.numRatings = numRatings;
+    }
+
+    public double addNewRating(double r) {
+        ratingsList.add(r);
+        numRatings++;
+        double sum = 0;
+        for (Double d : ratingsList) {
+            sum += d;
+        }
+        rating = sum / numRatings;
+        return rating;
     }
 }
