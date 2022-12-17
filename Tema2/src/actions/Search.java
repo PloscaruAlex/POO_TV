@@ -26,12 +26,14 @@ public class Search extends Action {
         }
 
         ArrayList<Movie> searchedMovies = new ArrayList<Movie>();
-        for (Movie m : this.getSession().getDatabaseMovies()) {
-            int index = m.getName().indexOf(this.getStartsWith());
-            if (index != -1) {
+        for (Movie m : this.getSession().getCurrentMovieList()) {
+            if (m.getName().startsWith(this.getStartsWith())) {
                 searchedMovies.add(m);
             }
         }
+        String country = this.getSession().getCurrentUser().getCredentials().getCountry();
+        searchedMovies.removeIf((m) -> m.getCountriesBanned().contains(country));
+
         this.getSession().getOutput().add(OutputHelper.search(searchedMovies, this.getSession().getCurrentUser()));
     }
 }

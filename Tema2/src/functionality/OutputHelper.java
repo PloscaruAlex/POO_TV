@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class OutputHelper {
@@ -23,26 +24,34 @@ public class OutputHelper {
 
         ArrayNode p = objectMapper.createArrayNode();
         for (Movie m : u.getPurchasedMovies()) {
-            ObjectNode movieNode = movieOutputHelper(m);
-            p.add(movieNode);
+            if (m != null) {
+                ObjectNode movieNode = movieOutputHelper(m);
+                p.add(movieNode);
+            }
         }
         node.set("purchasedMovies", p);
         ArrayNode w = objectMapper.createArrayNode();
         for (Movie m : u.getWatchedMovies()) {
-            ObjectNode movieNode = movieOutputHelper(m);
-            w.add(movieNode);
+            if (m != null) {
+                ObjectNode movieNode = movieOutputHelper(m);
+                w.add(movieNode);
+            }
         }
         node.set("watchedMovies", w);
         ArrayNode l = objectMapper.createArrayNode();
         for (Movie m : u.getLikedMovies()) {
-            ObjectNode movieNode = movieOutputHelper(m);
-            l.add(movieNode);
+            if (m != null) {
+                ObjectNode movieNode = movieOutputHelper(m);
+                l.add(movieNode);
+            }
         }
         node.set("likedMovies", l);
         ArrayNode r = objectMapper.createArrayNode();
         for (Movie m : u.getRatedMovies()) {
-            ObjectNode movieNode = movieOutputHelper(m);
-            r.add(movieNode);
+            if (m != null) {
+                ObjectNode movieNode = movieOutputHelper(m);
+                r.add(movieNode);
+            }
         }
         node.set("ratedMovies", r);
 
@@ -73,7 +82,9 @@ public class OutputHelper {
         node.set("countriesBanned", c);
 
         node.put("numLikes", m.getNumLikes());
-        node.put("rating", m.getRating());
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedNumber = df.format(m.getRating());
+        node.put("rating", Double.parseDouble(formattedNumber));
         node.put("numRatings", m.getNumRatings());
 
         return node;
@@ -121,7 +132,7 @@ public class OutputHelper {
         ObjectNode node = objectMapper.createObjectNode();
         node.set("error", null);
         ArrayNode arr = objectMapper.createArrayNode();
-        for (Movie m : session.getDatabaseMovies()) {
+        for (Movie m : session.getCurrentMovieList()) {
             if (!m.getCountriesBanned().contains(session.getCurrentUser().getCredentials().getCountry())) {
                 arr.add(movieOutputHelper(m));
             }
@@ -153,7 +164,9 @@ public class OutputHelper {
         ObjectNode node = objectMapper.createObjectNode();
         node.set("error", null);
         ArrayNode arr = objectMapper.createArrayNode();
-        arr.add(movieOutputHelper(movie));
+        if (movie != null) {
+            arr.add(movieOutputHelper(movie));
+        }
         node.set("currentMoviesList", arr);
         node.set("currentUser", userOutputHelper(u));
 

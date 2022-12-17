@@ -6,7 +6,6 @@ import functionality.OutputHelper;
 import pages.PageFactory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class Filter extends Action {
@@ -27,37 +26,40 @@ public class Filter extends Action {
             return;
         }
 
-        ArrayList<Movie> movies = new ArrayList<Movie>(this.getSession().getDatabaseMovies());
+        ArrayList<Movie> movies = new ArrayList<Movie>(this.getSession().getCurrentMovieList());
+        String country = this.getSession().getCurrentUser().getCredentials().getCountry();
+        movies.removeIf((m) -> m.getCountriesBanned().contains(country));
+
         if (this.getFilters().getSort().getRating() != null && this.getFilters().getSort().getDuration() != null) {
             if (this.getFilters().getSort().getRating().equals("decreasing")) {
                 if (this.getFilters().getSort().getDuration().equals("decreasing")) {
                     movies.sort(new Comparator<Movie>() {
                         @Override
                         public int compare(Movie m1, Movie m2) {
-                            double r1 = m1.getRating();
-                            double r2 = m2.getRating();
-                            int ratingComparator = Double.compare(r2, r1);
-                            if (ratingComparator != 0) {
-                                return ratingComparator;
-                            }
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
-                            return Integer.compare(d2, d1);
+                            int durationComparator = Integer.compare(d2, d1);
+                            if (durationComparator != 0) {
+                                return durationComparator;
+                            }
+                            double r1 = m1.getRating();
+                            double r2 = m2.getRating();
+                            return Double.compare(r2, r1);
                         }
                     });
                 } else {
                     movies.sort(new Comparator<Movie>() {
                         @Override
                         public int compare(Movie m1, Movie m2) {
-                            double r1 = m1.getRating();
-                            double r2 = m2.getRating();
-                            int ratingComparator = Double.compare(r2, r1);
-                            if (ratingComparator != 0) {
-                                return ratingComparator;
-                            }
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
-                            return Integer.compare(d1, d2);
+                            int durationComparator = Integer.compare(d1, d2);
+                            if (durationComparator != 0) {
+                                return durationComparator;
+                            }
+                            double r1 = m1.getRating();
+                            double r2 = m2.getRating();
+                            return Double.compare(r2, r1);
                         }
                     });
                 }
@@ -66,30 +68,30 @@ public class Filter extends Action {
                     movies.sort(new Comparator<Movie>() {
                         @Override
                         public int compare(Movie m1, Movie m2) {
-                            double r1 = m1.getRating();
-                            double r2 = m2.getRating();
-                            int ratingComparator = Double.compare(r1, r2);
-                            if (ratingComparator != 0) {
-                                return ratingComparator;
-                            }
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
-                            return Integer.compare(d2, d1);
+                            int durationComparator = Integer.compare(d2, d1);
+                            if (durationComparator != 0) {
+                                return durationComparator;
+                            }
+                            double r1 = m1.getRating();
+                            double r2 = m2.getRating();
+                            return Double.compare(r1, r2);
                         }
                     });
                 } else {
                     movies.sort(new Comparator<Movie>() {
                         @Override
                         public int compare(Movie m1, Movie m2) {
-                            double r1 = m1.getRating();
-                            double r2 = m2.getRating();
-                            int ratingComparator = Double.compare(r1, r2);
-                            if (ratingComparator != 0) {
-                                return ratingComparator;
-                            }
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
-                            return Integer.compare(d1, d2);
+                            int durationComparator = Integer.compare(d1, d2);
+                            if (durationComparator != 0) {
+                                return durationComparator;
+                            }
+                            double r1 = m1.getRating();
+                            double r2 = m2.getRating();
+                            return Double.compare(r1, r2);
                         }
                     });
                 }
@@ -112,27 +114,19 @@ public class Filter extends Action {
             ArrayList<String> actors = this.getFilters().getContains().getActors();
             ArrayList<String> genre = this.getFilters().getContains().getGenre();
 
-            movies.removeIf((m) -> !containsThis(m, actors, genre));
-        }
+            if (actors != null) {
+                for (String actor : actors) {
+                    movies.removeIf((m) -> !m.getActors().contains(actor));
+                }
+            }
 
-        this.getSession().getOutput().add(OutputHelper.filter(movies, this.getSession().getCurrentUser()));
-    }
-
-    private boolean containsThis(Movie m, ArrayList<String> a, ArrayList<String> g) {
-        if (a != null) {
-            for (String actor : m.getActors()) {
-                if (!a.contains(actor)) {
-                    return false;
+            if (genre != null) {
+                for (String g : genre) {
+                    movies.removeIf((m) -> !m.getGenres().contains(g));
                 }
             }
         }
-        if (g != null) {
-            for (String genre : m.getGenres()) {
-                if (!g.contains(genre)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        this.getSession().setCurrentMovieList(movies);
+        this.getSession().getOutput().add(OutputHelper.filter(this.getSession().getCurrentMovieList(), this.getSession().getCurrentUser()));
     }
 }

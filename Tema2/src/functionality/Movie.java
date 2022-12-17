@@ -2,6 +2,7 @@ package functionality;
 
 import io.MoviesInput;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Movie {

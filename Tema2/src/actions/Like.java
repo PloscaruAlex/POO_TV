@@ -26,20 +26,24 @@ public class Like extends Action {
             return;
         }
 
+        User user = this.getSession().getCurrentUser();
+        Movie movie = this.getSession().getCurrentMovieList().get(0);
+        if (movie == null) {
+            this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
+            return;
+        }
+
+        boolean watched = false;
         for (Movie m : this.getSession().getCurrentUser().getWatchedMovies()) {
-            if (!m.getName().contains(this.getMovie())) {
-                this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
-                return;
+            if (m != null && m.getName().equals(movie.getName())) {
+                watched = true;
+                break;
             }
         }
 
-        User user = this.getSession().getCurrentUser();
-        Movie movie = null;
-        for (Movie m : this.getSession().getDatabaseMovies()) {
-            if (m.getName().equals(this.getMovie())) {
-                movie = m;
-                break;
-            }
+        if (!watched) {
+            this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
+            return;
         }
 
         user.getLikedMovies().add(movie);

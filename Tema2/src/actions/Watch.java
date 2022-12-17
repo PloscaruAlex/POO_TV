@@ -26,19 +26,17 @@ public class Watch extends Action {
             return;
         }
 
-        for (Movie m : this.getSession().getCurrentUser().getPurchasedMovies()) {
-            if (!m.getName().contains(this.getMovie())) {
-                this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
-                return;
-            }
+        User user = this.getSession().getCurrentUser();
+        Movie movie = this.getSession().getCurrentMovieList().get(0);
+        if (movie == null) {
+            this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
+            return;
         }
 
-        User user = this.getSession().getCurrentUser();
-        Movie movie = null;
-        for (Movie m : this.getSession().getDatabaseMovies()) {
-            if (m.getName().equals(this.getMovie())) {
-                movie = m;
-                break;
+        for (Movie m : this.getSession().getCurrentUser().getPurchasedMovies()) {
+            if (!m.getName().contains(movie.getName())) {
+                this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
+                return;
             }
         }
 

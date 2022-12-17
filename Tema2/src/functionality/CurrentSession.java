@@ -20,6 +20,7 @@ public class CurrentSession {
     private User currentUser;
     private Page currentPage;
     private ArrayNode output;
+    private ArrayList<Movie> currentMovieList;
     private final static CurrentSession instance = new CurrentSession();
 
     private CurrentSession() {}
@@ -76,6 +77,14 @@ public class CurrentSession {
         this.output = output;
     }
 
+    public ArrayList<Movie> getCurrentMovieList() {
+        return currentMovieList;
+    }
+
+    public void setCurrentMovieList(ArrayList<Movie> currentMovieList) {
+        this.currentMovieList = currentMovieList;
+    }
+
     public void startWith(Input inputData) {
         databaseUsers = new ArrayList<User>();
         databaseMovies = new ArrayList<Movie>();
@@ -97,6 +106,7 @@ public class CurrentSession {
         }
         this.currentUser = null;
         this.currentPage = HomepageUnauthenticated.getInstance();
+        this.currentMovieList = this.databaseMovies;
     }
 
     public void stopSession() {
