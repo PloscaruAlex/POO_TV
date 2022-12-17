@@ -26,6 +26,7 @@ public class Filter extends Action {
             return;
         }
 
+        this.getSession().setCurrentMovieList(new ArrayList<Movie>(this.getSession().getDatabaseMovies()));
         ArrayList<Movie> movies = new ArrayList<Movie>(this.getSession().getCurrentMovieList());
         String country = this.getSession().getCurrentUser().getCredentials().getCountry();
         movies.removeIf((m) -> m.getCountriesBanned().contains(country));

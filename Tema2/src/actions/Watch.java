@@ -33,11 +33,16 @@ public class Watch extends Action {
             return;
         }
 
+        boolean purchased = false;
         for (Movie m : this.getSession().getCurrentUser().getPurchasedMovies()) {
-            if (!m.getName().contains(movie.getName())) {
-                this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
-                return;
+            if (m.getName().equals(movie.getName())) {
+                purchased = true;
+                break;
             }
+        }
+        if (!purchased) {
+            this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
+            return;
         }
 
         user.getWatchedMovies().add(movie);

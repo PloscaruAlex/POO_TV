@@ -49,7 +49,6 @@ public class Purchase extends Action {
                 return;
             }
 
-            user.getPurchasedMovies().add(movie);
             tokens -= 2;
             user.setTokensCount(tokens);
         } else {

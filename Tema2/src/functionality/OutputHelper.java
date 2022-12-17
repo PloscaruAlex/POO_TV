@@ -82,7 +82,7 @@ public class OutputHelper {
         node.set("countriesBanned", c);
 
         node.put("numLikes", m.getNumLikes());
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("##.##");
         String formattedNumber = df.format(m.getRating());
         node.put("rating", Double.parseDouble(formattedNumber));
         node.put("numRatings", m.getNumRatings());

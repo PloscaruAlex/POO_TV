@@ -8,6 +8,7 @@ public class MoviesPage extends Page {
             add("homepageAuthenticated");
             add("see details");
             add("logout");
+            add("movies");
         }
     };
     private ArrayList<String> actionsThatCanBePerformed = new ArrayList<String>() {

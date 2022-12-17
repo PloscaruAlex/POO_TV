@@ -277,16 +277,6 @@
       "numLikes" : 0,
       "rating" : 0.0,
       "numRatings" : 0
-    }, {
-      "name" : "Jason's Lyric",
-      "year" : 1994,
-      "duration" : 103,
-      "genres" : [ "Drama", "Mystery", "Western" ],
-      "actors" : [ "Hoebart Lipscomb", "Romain Fehners", "Sam Restall", "Tildy Kenaway" ],
-      "countriesBanned" : [ "Romania", "China", "Finland" ],
-      "numLikes" : 0,
-      "rating" : 0.0,
-      "numRatings" : 0
     } ],
     "watchedMovies" : [ ],
     "likedMovies" : [ ],
@@ -316,16 +306,6 @@
     "tokensCount" : 48,
     "numFreePremiumMovies" : 15,
     "purchasedMovies" : [ {
-      "name" : "Jason's Lyric",
-      "year" : 1994,
-      "duration" : 103,
-      "genres" : [ "Drama", "Mystery", "Western" ],
-      "actors" : [ "Hoebart Lipscomb", "Romain Fehners", "Sam Restall", "Tildy Kenaway" ],
-      "countriesBanned" : [ "Romania", "China", "Finland" ],
-      "numLikes" : 0,
-      "rating" : 0.0,
-      "numRatings" : 0
-    }, {
       "name" : "Jason's Lyric",
       "year" : 1994,
       "duration" : 103,

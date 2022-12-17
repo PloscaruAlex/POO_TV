@@ -35,7 +35,7 @@ public class Like extends Action {
 
         boolean watched = false;
         for (Movie m : this.getSession().getCurrentUser().getWatchedMovies()) {
-            if (m != null && m.getName().equals(movie.getName())) {
+            if (m.getName().equals(movie.getName())) {
                 watched = true;
                 break;
             }

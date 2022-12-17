@@ -26,6 +26,11 @@ public class Rate extends Action {
             return;
         }
 
+        if (this.getRate() < 0 || this.getRate() > 5) {
+            this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
+            return;
+        }
+
         User user = this.getSession().getCurrentUser();
         Movie movie = this.getSession().getCurrentMovieList().get(0);
         if (movie == null) {
@@ -35,7 +40,7 @@ public class Rate extends Action {
 
         boolean watched = false;
         for (Movie m : this.getSession().getCurrentUser().getWatchedMovies()) {
-            if (m != null && m.getName().equals(movie.getName())) {
+            if (m.getName().equals(movie.getName())) {
                 watched = true;
                 break;
             }

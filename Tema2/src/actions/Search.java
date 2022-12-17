@@ -34,6 +34,9 @@ public class Search extends Action {
         String country = this.getSession().getCurrentUser().getCredentials().getCountry();
         searchedMovies.removeIf((m) -> m.getCountriesBanned().contains(country));
 
+        if (searchedMovies.size() != 0) {
+            this.getSession().setCurrentMovieList(searchedMovies);
+        }
         this.getSession().getOutput().add(OutputHelper.search(searchedMovies, this.getSession().getCurrentUser()));
     }
 }
