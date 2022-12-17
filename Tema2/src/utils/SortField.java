@@ -2,7 +2,7 @@ package utils;
 
 import io.SortInput;
 
-public class SortField {
+public final class SortField {
     private String rating;
     private String duration;
 
@@ -22,7 +22,11 @@ public class SortField {
         this.duration = duration;
     }
 
-    public void setSortFromInput(SortInput sort) {
+    /**
+     * Sets the values of the sort field from the input files.
+     * @param sort the input for the sort field
+     */
+    public void setSortFromInput(final SortInput sort) {
         if (sort == null) {
             return;
         }

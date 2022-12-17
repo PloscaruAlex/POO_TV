@@ -2,7 +2,7 @@ package utils;
 
 import io.FiltersInput;
 
-public class FiltersField {
+public final class FiltersField {
     private SortField sort = new SortField();
     private ContainsField contains = new ContainsField();
 
@@ -22,7 +22,11 @@ public class FiltersField {
         this.contains = contains;
     }
 
-    public void setFiltersFromInput(FiltersInput filters) {
+    /**
+     * Sets the values of the filters field from the input files.
+     * @param filters the input for the filters field
+     */
+    public void setFiltersFromInput(final FiltersInput filters) {
         if (filters == null) {
             return;
         }

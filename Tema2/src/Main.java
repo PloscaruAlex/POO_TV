@@ -7,12 +7,17 @@ import io.Input;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-public class Main {
+public final class Main {
+    private Main() {
+    }
+
+    /**
+     * The main function which is called in each test.
+     *
+     * @param args the input file and the output file paths
+     * @throws IOException the io exception
+     */
     public static void main(final String[] args) throws IOException {
         String inFile = args[0];
         String outFile = args[1];
@@ -23,21 +28,6 @@ public class Main {
         if (!isCreated) {
             return;
         }
-
-
-
-
-        String result = "outputAux/" + inFile.substring(99, inFile.length() - 5) + outFile;
-        Path path = Paths.get(result);
-        File res = new File(result);
-        if (Files.exists(path)) {
-            res.delete();
-        }
-        res.createNewFile();
-
-
-
-
 
         ObjectMapper objectMapper = new ObjectMapper();
         Input inputData = objectMapper.readValue(inputFile, Input.class);
@@ -53,6 +43,5 @@ public class Main {
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(outputFile, output);
-        objectWriter.writeValue(res, output);
     }
 }

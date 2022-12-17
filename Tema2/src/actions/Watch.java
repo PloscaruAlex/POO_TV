@@ -8,13 +8,25 @@ import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Watch action class.
+ */
 public class Watch extends Action {
-    public Watch(CurrentSession session) {
+    /**
+     * Instantiates a new Watch action.
+     *
+     * @param session the session
+     */
+    public Watch(final CurrentSession session) {
         this.setSession(session);
     }
 
+    /**
+     * This is the function that performs the watch action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));

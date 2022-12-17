@@ -2,7 +2,7 @@ package pages;
 
 import java.util.ArrayList;
 
-public class HomepageUnauthenticated extends Page {
+public final class HomepageUnauthenticated extends Page {
     private ArrayList<String> pagesThatCanBeAccessed = new ArrayList<String>() {
         {
             add("login");
@@ -17,7 +17,8 @@ public class HomepageUnauthenticated extends Page {
 
     private static HomepageUnauthenticated instance = new HomepageUnauthenticated();
 
-    private HomepageUnauthenticated() {}
+    private HomepageUnauthenticated() {
+    }
 
     public static HomepageUnauthenticated getInstance() {
         return instance;
@@ -27,7 +28,7 @@ public class HomepageUnauthenticated extends Page {
         return pagesThatCanBeAccessed;
     }
 
-    public void setPagesThatCanBeAccessed(ArrayList<String> pagesThatCanBeAccessed) {
+    public void setPagesThatCanBeAccessed(final ArrayList<String> pagesThatCanBeAccessed) {
         this.pagesThatCanBeAccessed = pagesThatCanBeAccessed;
     }
 
@@ -35,7 +36,7 @@ public class HomepageUnauthenticated extends Page {
         return actionsThatCanBePerformed;
     }
 
-    public void setActionsThatCanBePerformed(ArrayList<String> actionsThatCanBePerformed) {
+    public void setActionsThatCanBePerformed(final ArrayList<String> actionsThatCanBePerformed) {
         this.actionsThatCanBePerformed = actionsThatCanBePerformed;
     }
 }

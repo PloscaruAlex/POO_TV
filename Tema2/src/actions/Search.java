@@ -7,13 +7,25 @@ import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Search action class.
+ */
 public class Search extends Action {
-    public Search(CurrentSession session) {
+    /**
+     * Instantiates a new Search action.
+     *
+     * @param session the session
+     */
+    public Search(final CurrentSession session) {
         this.setSession(session);
     }
 
+    /**
+     * This is the function that performs the search action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
@@ -37,6 +49,8 @@ public class Search extends Action {
         if (searchedMovies.size() != 0) {
             this.getSession().setCurrentMovieList(searchedMovies);
         }
-        this.getSession().getOutput().add(OutputHelper.search(searchedMovies, this.getSession().getCurrentUser()));
+        this.getSession().getOutput().add(
+                OutputHelper.search(searchedMovies, this.getSession().getCurrentUser())
+        );
     }
 }

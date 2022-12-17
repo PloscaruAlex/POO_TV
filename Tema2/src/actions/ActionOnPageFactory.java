@@ -3,8 +3,18 @@ package actions;
 import functionality.CurrentSession;
 import io.ActionsInput;
 
-public class ActionOnPageFactory {
-    public static Action createAction(ActionsInput action, CurrentSession session) {
+/**
+ * This is the factory that generates every action on page.
+ */
+public final class ActionOnPageFactory {
+    /**
+     * The main function in the factory that creates actions.
+     *
+     * @param action  the action
+     * @param session the session
+     * @return the action
+     */
+    public static Action createAction(final ActionsInput action, final CurrentSession session) {
         switch (action.getFeature()) {
             case "login":
                 Login login = new Login(session);
@@ -46,7 +56,12 @@ public class ActionOnPageFactory {
                 BuyTokens buyTokens = new BuyTokens(session);
                 buyTokens.setActionFromInput(action);
                 return buyTokens;
+            default:
+                break;
         }
         throw new IllegalArgumentException("Not an action.");
+    }
+
+    private ActionOnPageFactory() {
     }
 }

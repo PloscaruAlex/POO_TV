@@ -8,13 +8,25 @@ import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Purchase action class.
+ */
 public class Purchase extends Action {
-    public Purchase(CurrentSession session) {
+    /**
+     * Instantiates a new Purchase action.
+     *
+     * @param session the session
+     */
+    public Purchase(final CurrentSession session) {
         this.setSession(session);
     }
 
+    /**
+     * This is the function that performs the purchase action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));

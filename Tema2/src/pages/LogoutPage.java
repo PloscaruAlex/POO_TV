@@ -2,7 +2,7 @@ package pages;
 
 import java.util.ArrayList;
 
-public class LogoutPage extends Page {
+public final class LogoutPage extends Page {
     private ArrayList<String> pagesThatCanBeAccessed = new ArrayList<String>() {
         {
             add("none");
@@ -16,7 +16,8 @@ public class LogoutPage extends Page {
 
     private static LogoutPage instance = new LogoutPage();
 
-    private LogoutPage() {}
+    private LogoutPage() {
+    }
 
     public static LogoutPage getInstance() {
         return instance;

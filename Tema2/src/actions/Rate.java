@@ -1,20 +1,33 @@
 package actions;
 
 import functionality.CurrentSession;
-import functionality.Movie;
 import functionality.OutputHelper;
+import functionality.Constants;
 import functionality.User;
+import functionality.Movie;
 import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Rate action class.
+ */
 public class Rate extends Action {
-    public Rate(CurrentSession session) {
+    /**
+     * Instantiates a new Rate action.
+     *
+     * @param session the session
+     */
+    public Rate(final CurrentSession session) {
         this.setSession(session);
     }
 
+    /**
+     * This is the function that performs the rate action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
@@ -26,7 +39,7 @@ public class Rate extends Action {
             return;
         }
 
-        if (this.getRate() < 0 || this.getRate() > 5) {
+        if (this.getRate() < 0 || this.getRate() > Constants.MAX_RATING) {
             this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
             return;
         }

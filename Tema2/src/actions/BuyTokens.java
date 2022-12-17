@@ -6,13 +6,25 @@ import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Buy tokens action class.
+ */
 public class BuyTokens extends Action {
-    public BuyTokens(CurrentSession session) {
+    /**
+     * Instantiates a new Buy tokens action.
+     *
+     * @param session the session
+     */
+    public BuyTokens(final CurrentSession session) {
         this.setSession(session);
     }
 
+    /**
+     * This is the function that performs the buy tokens action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
@@ -24,7 +36,9 @@ public class BuyTokens extends Action {
             return;
         }
 
-        int balance = Integer.parseInt(this.getSession().getCurrentUser().getCredentials().getBalance());
+        int balance = Integer.parseInt(
+                this.getSession().getCurrentUser().getCredentials().getBalance()
+        );
         int count = Integer.parseInt(this.getCount());
         int tokens = this.getSession().getCurrentUser().getTokensCount();
         if (balance < count) {

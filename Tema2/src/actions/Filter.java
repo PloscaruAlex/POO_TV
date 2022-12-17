@@ -8,13 +8,25 @@ import pages.PageFactory;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Filter action class.
+ */
 public class Filter extends Action {
-    public Filter(CurrentSession session) {
+    /**
+     * Instantiates a new Filter action.
+     *
+     * @param session the session
+     */
+    public Filter(final CurrentSession session) {
         this.setSession(session);
     }
 
+    /**
+     * This is the function that performs the filter action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
@@ -26,17 +38,21 @@ public class Filter extends Action {
             return;
         }
 
-        this.getSession().setCurrentMovieList(new ArrayList<Movie>(this.getSession().getDatabaseMovies()));
+        this.getSession().setCurrentMovieList(
+                new ArrayList<Movie>(this.getSession().getDatabaseMovies())
+        );
         ArrayList<Movie> movies = new ArrayList<Movie>(this.getSession().getCurrentMovieList());
         String country = this.getSession().getCurrentUser().getCredentials().getCountry();
         movies.removeIf((m) -> m.getCountriesBanned().contains(country));
 
-        if (this.getFilters().getSort().getRating() != null && this.getFilters().getSort().getDuration() != null) {
+        if (this.getFilters().getSort().getRating() != null
+                && this.getFilters().getSort().getDuration() != null
+        ) {
             if (this.getFilters().getSort().getRating().equals("decreasing")) {
                 if (this.getFilters().getSort().getDuration().equals("decreasing")) {
                     movies.sort(new Comparator<Movie>() {
                         @Override
-                        public int compare(Movie m1, Movie m2) {
+                        public int compare(final Movie m1, final Movie m2) {
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
                             int durationComparator = Integer.compare(d2, d1);
@@ -51,7 +67,7 @@ public class Filter extends Action {
                 } else {
                     movies.sort(new Comparator<Movie>() {
                         @Override
-                        public int compare(Movie m1, Movie m2) {
+                        public int compare(final Movie m1, final Movie m2) {
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
                             int durationComparator = Integer.compare(d1, d2);
@@ -68,7 +84,7 @@ public class Filter extends Action {
                 if (this.getFilters().getSort().getDuration().equals("decreasing")) {
                     movies.sort(new Comparator<Movie>() {
                         @Override
-                        public int compare(Movie m1, Movie m2) {
+                        public int compare(final Movie m1, final Movie m2) {
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
                             int durationComparator = Integer.compare(d2, d1);
@@ -83,7 +99,7 @@ public class Filter extends Action {
                 } else {
                     movies.sort(new Comparator<Movie>() {
                         @Override
-                        public int compare(Movie m1, Movie m2) {
+                        public int compare(final Movie m1, final Movie m2) {
                             int d1 = m1.getDuration();
                             int d2 = m2.getDuration();
                             int durationComparator = Integer.compare(d1, d2);
@@ -128,6 +144,9 @@ public class Filter extends Action {
             }
         }
         this.getSession().setCurrentMovieList(movies);
-        this.getSession().getOutput().add(OutputHelper.filter(this.getSession().getCurrentMovieList(), this.getSession().getCurrentUser()));
+        this.getSession().getOutput().add(OutputHelper.filter(
+                this.getSession().getCurrentMovieList(),
+                this.getSession().getCurrentUser()
+        ));
     }
 }

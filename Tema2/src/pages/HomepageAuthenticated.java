@@ -2,7 +2,7 @@ package pages;
 
 import java.util.ArrayList;
 
-public class HomepageAuthenticated extends Page{
+public final class HomepageAuthenticated extends Page {
     private ArrayList<String> pagesThatCanBeAccessed = new ArrayList<String>() {
         {
             add("movies");
@@ -18,7 +18,8 @@ public class HomepageAuthenticated extends Page{
 
     private static HomepageAuthenticated instance = new HomepageAuthenticated();
 
-    private HomepageAuthenticated() {}
+    private HomepageAuthenticated() {
+    }
 
     public static HomepageAuthenticated getInstance() {
         return instance;
@@ -28,7 +29,7 @@ public class HomepageAuthenticated extends Page{
         return pagesThatCanBeAccessed;
     }
 
-    public void setPagesThatCanBeAccessed(ArrayList<String> pagesThatCanBeAccessed) {
+    public void setPagesThatCanBeAccessed(final ArrayList<String> pagesThatCanBeAccessed) {
         this.pagesThatCanBeAccessed = pagesThatCanBeAccessed;
     }
 
@@ -36,7 +37,7 @@ public class HomepageAuthenticated extends Page{
         return actionsThatCanBePerformed;
     }
 
-    public void setActionsThatCanBePerformed(ArrayList<String> actionsThatCanBePerformed) {
+    public void setActionsThatCanBePerformed(final ArrayList<String> actionsThatCanBePerformed) {
         this.actionsThatCanBePerformed = actionsThatCanBePerformed;
     }
 }

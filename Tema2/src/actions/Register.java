@@ -7,12 +7,25 @@ import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Register action class.
+ */
 public class Register extends  Action {
-    public Register(CurrentSession session) {
+    /**
+     * Instantiates a new Register action.
+     *
+     * @param session the session
+     */
+    public Register(final CurrentSession session) {
         this.setSession(session);
     }
+
+    /**
+     * This is the function that performs the register action.
+     */
     public void doAction() {
-        ArrayList<String> allowedActions = this.getSession().getCurrentPage().getActionsThatCanBePerformed();
+        ArrayList<String> allowedActions =
+                this.getSession().getCurrentPage().getActionsThatCanBePerformed();
         if (!allowedActions.contains(this.getFeature())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
@@ -37,6 +50,8 @@ public class Register extends  Action {
         int indexCurrent = this.getSession().userExists(this.getCredentials().getName());
         this.getSession().setCurrentUser(this.getSession().getDatabaseUsers().get(indexCurrent));
         this.getSession().setCurrentPage(PageFactory.createPage("homepageAuthenticated"));
-        this.getSession().getOutput().add(OutputHelper.loginInfo(this.getSession().getCurrentUser()));
+        this.getSession().getOutput().add(
+                OutputHelper.loginInfo(this.getSession().getCurrentUser())
+        );
     }
 }

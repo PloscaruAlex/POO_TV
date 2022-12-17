@@ -3,12 +3,23 @@ package functionality;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class OutputHelper {
-    public static ObjectNode userOutputHelper(User u) {
+/**
+ * Output helper class.
+ */
+public final class OutputHelper {
+    private OutputHelper() {
+    }
+
+    /**
+     * User output helper object node.
+     *
+     * @param u the user
+     * @return the object node
+     */
+    public static ObjectNode userOutputHelper(final User u) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         ObjectNode credentials = objectMapper.createObjectNode();
@@ -58,7 +69,13 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode movieOutputHelper(Movie m) {
+    /**
+     * Movie output helper object node.
+     *
+     * @param m the movie
+     * @return the object node
+     */
+    public static ObjectNode movieOutputHelper(final Movie m) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.put("name", m.getName());
@@ -90,7 +107,13 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode loginInfo(User u) {
+    /**
+     * Login info output.
+     *
+     * @param u the user
+     * @return the object node
+     */
+    public static ObjectNode loginInfo(final User u) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.set("error", null);
@@ -101,7 +124,13 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode error(CurrentSession session) {
+    /**
+     * Error output.
+     *
+     * @param session the session
+     * @return the object node
+     */
+    public static ObjectNode error(final CurrentSession session) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.put("error", "Error");
@@ -112,7 +141,14 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode search(ArrayList<Movie> m, User u) {
+    /**
+     * Search output.
+     *
+     * @param m the movie
+     * @param u the user
+     * @return the object node
+     */
+    public static ObjectNode search(final ArrayList<Movie> m, final User u) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         ArrayNode arr = objectMapper.createArrayNode();
@@ -127,13 +163,21 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode moviesInfo(CurrentSession session) {
+    /**
+     * Movies info output.
+     *
+     * @param session the session
+     * @return the object node
+     */
+    public static ObjectNode moviesInfo(final CurrentSession session) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.set("error", null);
         ArrayNode arr = objectMapper.createArrayNode();
         for (Movie m : session.getCurrentMovieList()) {
-            if (!m.getCountriesBanned().contains(session.getCurrentUser().getCredentials().getCountry())) {
+            if (!m.getCountriesBanned().contains(
+                    session.getCurrentUser().getCredentials().getCountry()
+            )) {
                 arr.add(movieOutputHelper(m));
             }
         }
@@ -143,7 +187,14 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode filter(ArrayList<Movie> movies, User u) {
+    /**
+     * Filter output.
+     *
+     * @param movies the movies
+     * @param u      the user
+     * @return the object node
+     */
+    public static ObjectNode filter(final ArrayList<Movie> movies, final User u) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.set("error", null);
@@ -159,7 +210,14 @@ public class OutputHelper {
         return node;
     }
 
-    public static ObjectNode details(Movie movie, User u) {
+    /**
+     * Details output.
+     *
+     * @param movie the movie
+     * @param u     the user
+     * @return the object node
+     */
+    public static ObjectNode details(final Movie movie, final User u) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode node = objectMapper.createObjectNode();
         node.set("error", null);

@@ -7,12 +7,25 @@ import pages.PageFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Change page action class.
+ */
 public class ChangePage extends Action {
-    public ChangePage(CurrentSession session) {
+    /**
+     * Instantiates a new Change page action.
+     *
+     * @param session the session
+     */
+    public ChangePage(final CurrentSession session) {
         this.setSession(session);
     }
+
+    /**
+     * This is the function that performs the change page action.
+     */
     public void doAction() {
-        ArrayList<String> allowedPages = this.getSession().getCurrentPage().getPagesThatCanBeAccessed();
+        ArrayList<String> allowedPages =
+                this.getSession().getCurrentPage().getPagesThatCanBeAccessed();
         if (!allowedPages.contains(this.getPage())) {
             if (this.getSession().getCurrentUser() != null) {
                 this.getSession().getOutput().add(OutputHelper.error(this.getSession()));
@@ -27,14 +40,26 @@ public class ChangePage extends Action {
         this.getSession().setCurrentPage(PageFactory.createPage(this.getPage()));
 
         if (this.getPage().equals("movies")) {
-            this.getSession().setCurrentMovieList(new ArrayList<Movie>(this.getSession().getDatabaseMovies()));
-            this.getSession().getCurrentMovieList().removeIf((m) -> m.getCountriesBanned().contains(this.getSession().getCurrentUser().getCredentials().getCountry()));
+            this.getSession().setCurrentMovieList(
+                    new ArrayList<Movie>(this.getSession().getDatabaseMovies())
+            );
+            this.getSession().getCurrentMovieList().removeIf(
+                    (m) -> m.getCountriesBanned().contains(
+                            this.getSession().getCurrentUser().getCredentials().getCountry()
+                    )
+            );
             this.getSession().getOutput().add(OutputHelper.moviesInfo(this.getSession()));
         }
 
         if (this.getPage().equals("homepageAuthenticated")) {
-            this.getSession().setCurrentMovieList(new ArrayList<Movie>(this.getSession().getDatabaseMovies()));
-            this.getSession().getCurrentMovieList().removeIf((m) -> m.getCountriesBanned().contains(this.getSession().getCurrentUser().getCredentials().getCountry()));
+            this.getSession().setCurrentMovieList(
+                    new ArrayList<Movie>(this.getSession().getDatabaseMovies())
+            );
+            this.getSession().getCurrentMovieList().removeIf(
+                    (m) -> m.getCountriesBanned().contains(
+                            this.getSession().getCurrentUser().getCredentials().getCountry()
+                    )
+            );
         }
 
         if (this.getPage().equals("see details")) {
@@ -46,7 +71,9 @@ public class ChangePage extends Action {
                 }
             }
             if (movie != null) {
-                this.getSession().getOutput().add(OutputHelper.details(movie, this.getSession().getCurrentUser()));
+                this.getSession().getOutput().add(
+                        OutputHelper.details(movie, this.getSession().getCurrentUser())
+                );
                 ArrayList<Movie> movies = new ArrayList<Movie>();
                 movies.add(movie);
                 this.getSession().setCurrentMovieList(movies);

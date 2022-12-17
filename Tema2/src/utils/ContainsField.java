@@ -1,10 +1,9 @@
 package utils;
 
 import io.ContainsInput;
-
 import java.util.ArrayList;
 
-public class ContainsField {
+public final class ContainsField {
     private ArrayList<String> actors;
     private ArrayList<String> genre;
 
@@ -24,7 +23,11 @@ public class ContainsField {
         this.genre = genre;
     }
 
-    public void setContainsFromInput(ContainsInput contains) {
+    /**
+     * Sets the values of the contains field from the input files.
+     * @param contains the input for the contains field
+     */
+    public void setContainsFromInput(final ContainsInput contains) {
         if (contains == null) {
             return;
         }
